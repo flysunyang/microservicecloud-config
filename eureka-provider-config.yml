@@ -1,0 +1,56 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+spring:
+  profiles: dev
+  application:
+    name: dev-config-provider
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud01?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+server:
+  port: 8001
+mybatis:
+  type-aliases-package: com.sun.springcloud.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml
+eureka:
+  instance:
+    instance-id: dev-config
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+---
+spring:
+  profiles: test
+  application:
+    name: test-config-provider
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud02?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+server:
+  port: 8002
+mybatis:
+  type-aliases-package: com.sun.springcloud.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+eureka:
+  instance:
+    instance-id: test-config
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
