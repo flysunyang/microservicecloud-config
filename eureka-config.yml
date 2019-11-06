@@ -11,6 +11,8 @@ spring:
   profiles: dev
 eureka:
   client:
+    register-with-eureka: false
+    fetch-registry: false
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
   instance:
@@ -25,6 +27,8 @@ spring:
     name: eureka-config-test
 eureka:
   client:
+    register-with-eureka: false
+    fetch-registry: false
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
   instance:
