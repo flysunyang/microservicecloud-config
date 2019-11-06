@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+server:
+  port: 7001
+spring:
+  application:
+    name: eureka-config-dev
+  profiles: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: eureka-dev-7001
+    prefer-ip-address: true
+---
+server:
+  port: 7001
+spring:
+  profiles: test
+  application:
+    name: eureka-config-test
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: eureka-test-7001
+    prefer-ip-address: true
